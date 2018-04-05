@@ -1,0 +1,8 @@
+C:\Users\Tal\Desktop\CSV_Project\DataDisplay\DataDisplay\bin\Debug\netstandard1.6\DataDisplay.deps.json
+C:\Users\Tal\Desktop\CSV_Project\DataDisplay\DataDisplay\bin\Debug\netstandard1.6\DataDisplay.dll
+C:\Users\Tal\Desktop\CSV_Project\DataDisplay\DataDisplay\bin\Debug\netstandard1.6\DataDisplay.pdb
+C:\Users\Tal\Desktop\CSV_Project\DataDisplay\DataDisplay\obj\Debug\netstandard1.6\DataDisplay.csprojResolveAssemblyReference.cache
+C:\Users\Tal\Desktop\CSV_Project\DataDisplay\DataDisplay\obj\Debug\netstandard1.6\DataDisplay.csproj.CoreCompileInputs.cache
+C:\Users\Tal\Desktop\CSV_Project\DataDisplay\DataDisplay\obj\Debug\netstandard1.6\DataDisplay.AssemblyInfo.cs
+C:\Users\Tal\Desktop\CSV_Project\DataDisplay\DataDisplay\obj\Debug\netstandard1.6\DataDisplay.dll
+C:\Users\Tal\Desktop\CSV_Project\DataDisplay\DataDisplay\obj\Debug\netstandard1.6\DataDisplay.pdb

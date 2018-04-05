@@ -2,7 +2,8 @@
 
 namespace DataDisplay
 {
-    public class Class1
+    public interface IFileImporter
     {
+        void Load();
     }
 }
