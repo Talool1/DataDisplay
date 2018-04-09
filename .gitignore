@@ -1,4 +1,5 @@
 /.vs/
+<<<<<<< HEAD
 /DataDisplay/bin/*
 /DataDisplay/obj/*
 /DataDisplay.Tests/bin/*
@@ -6,3 +7,5 @@
 /SandboxApp/bin/*
 /SandboxApp/obj/*
 /packages/
+=======
+>>>>>>> parent of 359deb8... Updated .gitignore and removed unnecessary folders
