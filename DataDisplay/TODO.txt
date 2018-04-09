@@ -1,0 +1,3 @@
+﻿*Add exception handling
+*Handle all kinds of invalit formats(either by exception or by using a default behaviour)
+*Check is StringBuilder.Clear() actually clears the underlying array[Can save some CPU Cycles by just reseting SB's position and length]

@@ -1,0 +1,16 @@
+﻿<Window x:Class="FrontEndApp.LoaderWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:FrontEndApp"
+        mc:Ignorable="d"
+        Title="LoaderWindow" Height="450" Width="800" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
+    <Grid>
+        <TextBox x:Name="Filepath_Textbox" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" VerticalAlignment="Top" Width="540" Margin="88,57,0,0" TextChanged="Filepath_Textbox_TextChanged"/>
+        <Button x:Name="Browse_Btn" Content="Browse" HorizontalAlignment="Left" VerticalAlignment="Top" Width="95" Margin="633,57,0,0" Height="23" Click="Browse_Btn_Click"/>
+        <Button x:Name="OK_Btn" Content="OK" HorizontalAlignment="Left" Height="35" Margin="485,346,0,0" VerticalAlignment="Top" Width="113" Click="OK_Btn_Click" IsDefault="True"/>
+        <Button x:Name="Cancel_Btn" Content="Cancel" HorizontalAlignment="Left" Height="35" Margin="615,346,0,0" VerticalAlignment="Top" Width="113" Click="Cancel_Btn_Click" IsCancel="True"/>
+
+    </Grid>
+</Window>
