@@ -1,1 +1,8 @@
 /.vs/
+/DataDisplay/bin/
+/DataDisplay/obj/
+/DataDisplay.Tests/bin/
+/DataDisplay.Tests/obj/
+/SandboxApp/bin/
+/SandboxApp/obj/
+/packages/

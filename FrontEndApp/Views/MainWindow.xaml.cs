@@ -33,14 +33,12 @@ namespace FrontEndApp
             LoaderWindow loaderWindow = new LoaderWindow();
             loaderWindow.OnFileLoaded += LoadFile;
             loaderWindow.ShowDialog();
-            
         }
 
         void LoadFile(object sender, IImporter importer)
         {
             this.importer = importer;
-            try
-            {
+
                 // Load
                 //var data = importer.LoadAll();
 
@@ -52,11 +50,6 @@ namespace FrontEndApp
 
                 // Populate with data
 
-            }
-            catch
-            {
-
-            }
         }
 
         private void MenuItem_Click(object sender, RoutedEventArgs e)
