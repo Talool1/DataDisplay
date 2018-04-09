@@ -41,7 +41,7 @@ namespace FrontEndApp
             string filePath = Filepath_Textbox.Text;
             if (!ValidateFilepath())
             {
-                MessageBox.Show(fileDoesntExistMessage, errorMessageCaption);
+                MessageBox.Show(fileDoesntExistMessage, errorMessageCaption, MessageBoxButton.OK ,MessageBoxImage.Error);
                 return;
             }
 

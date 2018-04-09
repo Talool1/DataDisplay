@@ -2,19 +2,15 @@ C:\Users\Tal\Desktop\CSV_Project\DataDisplay\FrontEndApp\bin\Debug\FrontEndApp.e
 C:\Users\Tal\Desktop\CSV_Project\DataDisplay\FrontEndApp\bin\Debug\FrontEndApp.exe
 C:\Users\Tal\Desktop\CSV_Project\DataDisplay\FrontEndApp\bin\Debug\FrontEndApp.pdb
 C:\Users\Tal\Desktop\CSV_Project\DataDisplay\FrontEndApp\obj\Debug\FrontEndApp.csprojResolveAssemblyReference.cache
-C:\Users\Tal\Desktop\CSV_Project\DataDisplay\FrontEndApp\obj\Debug\MainWindow.g.cs
 C:\Users\Tal\Desktop\CSV_Project\DataDisplay\FrontEndApp\obj\Debug\App.g.cs
 C:\Users\Tal\Desktop\CSV_Project\DataDisplay\FrontEndApp\obj\Debug\FrontEndApp_MarkupCompile.cache
 C:\Users\Tal\Desktop\CSV_Project\DataDisplay\FrontEndApp\obj\Debug\FrontEndApp_MarkupCompile.lref
-C:\Users\Tal\Desktop\CSV_Project\DataDisplay\FrontEndApp\obj\Debug\MainWindow.baml
 C:\Users\Tal\Desktop\CSV_Project\DataDisplay\FrontEndApp\obj\Debug\FrontEndApp.g.resources
 C:\Users\Tal\Desktop\CSV_Project\DataDisplay\FrontEndApp\obj\Debug\FrontEndApp.Properties.Resources.resources
 C:\Users\Tal\Desktop\CSV_Project\DataDisplay\FrontEndApp\obj\Debug\FrontEndApp.csproj.GenerateResource.cache
 C:\Users\Tal\Desktop\CSV_Project\DataDisplay\FrontEndApp\obj\Debug\FrontEndApp.csproj.CoreCompileInputs.cache
 C:\Users\Tal\Desktop\CSV_Project\DataDisplay\FrontEndApp\obj\Debug\FrontEndApp.exe
 C:\Users\Tal\Desktop\CSV_Project\DataDisplay\FrontEndApp\obj\Debug\FrontEndApp.pdb
-C:\Users\Tal\Desktop\CSV_Project\DataDisplay\FrontEndApp\obj\Debug\LoaderWindow.g.cs
-C:\Users\Tal\Desktop\CSV_Project\DataDisplay\FrontEndApp\obj\Debug\LoaderWindow.baml
 C:\Users\Tal\Desktop\CSV_Project\DataDisplay\FrontEndApp\bin\Debug\Microsoft.Win32.Primitives.dll
 C:\Users\Tal\Desktop\CSV_Project\DataDisplay\FrontEndApp\bin\Debug\netstandard.dll
 C:\Users\Tal\Desktop\CSV_Project\DataDisplay\FrontEndApp\bin\Debug\System.AppContext.dll
@@ -115,3 +111,7 @@ C:\Users\Tal\Desktop\CSV_Project\DataDisplay\FrontEndApp\bin\Debug\DataDisplay.d
 C:\Users\Tal\Desktop\CSV_Project\DataDisplay\FrontEndApp\bin\Debug\DataDisplay.pdb
 C:\Users\Tal\Desktop\CSV_Project\DataDisplay\FrontEndApp\obj\Debug\FrontEndApp.exe.config
 C:\Users\Tal\Desktop\CSV_Project\DataDisplay\FrontEndApp\obj\Debug\FrontEndApp.csproj.CopyComplete
+C:\Users\Tal\Desktop\CSV_Project\DataDisplay\FrontEndApp\obj\Debug\Views\LoaderWindow.g.cs
+C:\Users\Tal\Desktop\CSV_Project\DataDisplay\FrontEndApp\obj\Debug\Views\MainWindow.g.cs
+C:\Users\Tal\Desktop\CSV_Project\DataDisplay\FrontEndApp\obj\Debug\Views\LoaderWindow.baml
+C:\Users\Tal\Desktop\CSV_Project\DataDisplay\FrontEndApp\obj\Debug\Views\MainWindow.baml
