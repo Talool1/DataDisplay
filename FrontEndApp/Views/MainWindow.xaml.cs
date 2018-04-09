@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using DataDisplay;
+using FrontEndApp.ViewModels;
 
 namespace FrontEndApp
 {
@@ -31,31 +32,40 @@ namespace FrontEndApp
         private void OpenLoaderWindow(object sender, RoutedEventArgs e)
         {
             LoaderWindow loaderWindow = new LoaderWindow();
-            loaderWindow.OnFileLoaded += LoadFile;
+            loaderWindow.OnFileLoaded += Load;
             loaderWindow.ShowDialog();
-            
         }
 
-        void LoadFile(object sender, IImporter importer)
+        private void Load(object sender, DisplayViewModel viewModel)
         {
-            this.importer = importer;
-            try
+            PopulateColumns(viewModel.dataObjectMetadata);
+            PopulateData(viewModel.importer);
+
+        }
+
+        private void PopulateData(IImporter importer)
+        {
+            var data = importer.LoadAll();
+            foreach (var dataItem in data)
             {
-                // Load
-                //var data = importer.LoadAll();
+                dataGridDisplay.Items.Add(dataItem);
+                //dataGridDisplay.ItemsSource = data;
 
-                // Populate Columns
-                dataGridDisplay.Columns.Clear();
-                var column = new DataGridTextColumn();
-                column.Header = "HEADER!";
-                dataGridDisplay.Columns.Add(column);
-
-                // Populate with data
-
+                //for (int i = 0; i < dataItem.Columns.Length; i++)
+                //{
+                //    dataGridDisplay.Items.Add(dataItem);
+                //}
             }
-            catch
-            {
+        }
 
+        private void PopulateColumns(IEnumerable<DataObjectMetadata> metadataCollection)
+        {
+            dataGridDisplay.Columns.Clear();
+            foreach (var datacolumn in metadataCollection)
+            {
+                DataGridTextColumn column = new DataGridTextColumn();
+                column.Header = datacolumn.columnName;
+                dataGridDisplay.Columns.Add(column);
             }
         }
 

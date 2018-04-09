@@ -24,10 +24,9 @@ namespace FrontEndApp
         private string openFileDialogueTitle = "Select File";
         private string fileType = "CSV Files | *.csv";
         private string fileDoesntExistMessage = "The File you are trying to load doesn't exist.";
-        private string errorMessageCaption = "Error";
         private readonly bool checkContinuously = true;
         private OpenFileDialog openFileDialogue;
-        internal event EventHandler<IImporter> OnFileLoaded;
+        internal event EventHandler<ViewModels.DisplayViewModel> OnFileLoaded;
 
         public LoaderWindow()
         {
@@ -41,11 +40,42 @@ namespace FrontEndApp
             string filePath = Filepath_Textbox.Text;
             if (!ValidateFilepath())
             {
-                MessageBox.Show(fileDoesntExistMessage, errorMessageCaption, MessageBoxButton.OK ,MessageBoxImage.Error);
+                MessageBox.Show(fileDoesntExistMessage, "Error", MessageBoxButton.OK ,MessageBoxImage.Error);
                 return;
             }
 
-            OnFileLoaded(this, null);
+            // TEMP
+            DataObjectMetadata[] meta = new DataObjectMetadata[6];
+            Type[] dataTypes = new Type[]
+            {
+                typeof(DateTime),
+                typeof(int),
+                typeof(int),
+                typeof(int),
+                typeof(int),
+                typeof(int),
+            };
+
+            string[] dataNames = new string[]
+            {
+                "The Time!",
+                "The Num1!",
+                "The Num2!",
+                "The Num3!",
+                "The Num4!",
+                "The Num5!",
+            };
+
+            for (int i = 0; i < meta.Length; i++)
+            {
+                meta[i] = new DataObjectMetadata(dataNames[i], dataTypes[i]);
+            }
+
+            IImporter importer = new NewCsvImporter(filePath, dataTypes);
+
+            var viewModel = new ViewModels.DisplayViewModel(meta, importer);
+            
+            OnFileLoaded(this, viewModel);
             DialogResult = true;
         }
 

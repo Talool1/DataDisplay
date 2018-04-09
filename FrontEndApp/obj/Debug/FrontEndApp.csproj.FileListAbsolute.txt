@@ -115,3 +115,4 @@ C:\Users\Tal\Desktop\CSV_Project\DataDisplay\FrontEndApp\obj\Debug\Views\LoaderW
 C:\Users\Tal\Desktop\CSV_Project\DataDisplay\FrontEndApp\obj\Debug\Views\MainWindow.g.cs
 C:\Users\Tal\Desktop\CSV_Project\DataDisplay\FrontEndApp\obj\Debug\Views\LoaderWindow.baml
 C:\Users\Tal\Desktop\CSV_Project\DataDisplay\FrontEndApp\obj\Debug\Views\MainWindow.baml
+C:\Users\Tal\Desktop\CSV_Project\DataDisplay\FrontEndApp\bin\Debug\new2.csv

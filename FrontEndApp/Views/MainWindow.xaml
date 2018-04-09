@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:FrontEndApp"
         mc:Ignorable="d"
-        Title="DataDisplay" Height="450" Width="800">
+        Title="DataDisplay" Height="450" Width="800" WindowStartupLocation="CenterScreen">
     <Grid>
         <Menu HorizontalAlignment="Left" VerticalAlignment="Top">
             <MenuItem Header="LoadFile" >
@@ -14,7 +14,11 @@
                 <MenuItem Header="Close" Click="MenuItem_Click"/>
             </MenuItem>
         </Menu>
-        <DataGrid x:Name="dataGridDisplay" HorizontalAlignment="Left" Height="396" VerticalAlignment="Top" Width="792" Margin="0,23,0,0"/>
+        <DataGrid x:Name="dataGridDisplay" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,23,0,0" SelectionMode="Single">
+            <DataGrid.Columns>
+                <DataGridTextColumn Binding="{x:Null}" ClipboardContentBinding="{x:Null}" Header="HEAD"/>
+            </DataGrid.Columns>
+        </DataGrid>
 
     </Grid>
 </Window>
