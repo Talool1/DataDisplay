@@ -11,10 +11,13 @@ namespace FrontEndApp.ViewModels
     {
         public IImporter importer { get; private set; }
         public DataObjectMetadata[] dataObjectMetadata { get; private set; }
+        // For now....
+        public List<DataObject> TheData { get; private set; }
 
         public DisplayViewModel(DataObjectMetadata[] dataObjectMetadata, IImporter importer)
         {
             this.importer = importer;
+            this.TheData = importer.LoadAll() as List<DataObject>;
             this.dataObjectMetadata = dataObjectMetadata;
         }
     }

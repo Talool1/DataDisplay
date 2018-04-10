@@ -14,11 +14,7 @@
                 <MenuItem Header="Close" Click="MenuItem_Click"/>
             </MenuItem>
         </Menu>
-        <DataGrid x:Name="dataGridDisplay" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,23,0,0" SelectionMode="Single">
-            <DataGrid.Columns>
-                <DataGridTextColumn Binding="{x:Null}" ClipboardContentBinding="{x:Null}" Header="HEAD"/>
-            </DataGrid.Columns>
-        </DataGrid>
+        <DataGrid x:Name="dataGridDisplay" ItemsSource="{Binding Path=TheData}" Margin="0,23,0,0" SelectionMode="Single" AutoGenerateColumns="False"/>
 
     </Grid>
 </Window>

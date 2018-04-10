@@ -11,10 +11,11 @@ namespace DataDisplay
         private NewCsvLineParser lineParser;
         private long streamPosition;
         
-        public NewCsvImporter(string filePath, Type[] dataObjectColumnTypes)
+        public NewCsvImporter(string filePath, Type[] dataObjectColumnTypes, char separatorChar = ',')
         {
+            char[] whiteSpaceChars = new char[] { ' ' };
             this.filePath = filePath;
-            this.lineParser = new NewCsvLineParser(dataObjectColumnTypes);
+            this.lineParser = new NewCsvLineParser(dataObjectColumnTypes, separatorChar, whiteSpaceChars);
         }
 
         public IEnumerable<DataObject> LoadAll()

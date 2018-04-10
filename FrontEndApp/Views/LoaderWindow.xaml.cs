@@ -24,15 +24,24 @@ namespace FrontEndApp
         private string openFileDialogueTitle = "Select File";
         private string fileType = "CSV Files | *.csv";
         private string fileDoesntExistMessage = "The File you are trying to load doesn't exist.";
+        private string unnamedFieldMessage = "The Field must have a name.";
+        private string UnselectedFieldToRemoveMessage = "Please select the field you would like to remove.";
         private readonly bool checkContinuously = true;
         private OpenFileDialog openFileDialogue;
         internal event EventHandler<ViewModels.DisplayViewModel> OnFileLoaded;
+        internal ViewModels.LoaderViewModel ViewModel { get; private set; }
 
-        public LoaderWindow()
+        internal LoaderWindow(ViewModels.LoaderViewModel viewModel)
         {
+            this.ViewModel = viewModel;
             InitializeComponent();
             if (checkContinuously)
                 OK_Btn.IsEnabled = false;
+
+            // Temp
+            DataTypePropBox.Items.Add(typeof(DateTime));
+            DataTypePropBox.Items.Add(typeof(int));
+            DataTypePropBox.SelectedIndex = 0;
         }
 
         private void OK_Btn_Click(object sender, RoutedEventArgs e)
@@ -89,7 +98,8 @@ namespace FrontEndApp
             openFileDialogue = new OpenFileDialog();
             openFileDialogue.Title = openFileDialogueTitle;
             openFileDialogue.Filter = fileType;
-            openFileDialogue.FileOk += BrowseToFile;
+            //openFileDialogue.FileOk += BrowseToFile;
+            openFileDialogue.FileOk += (s, args) => { ViewModel.FilePath = openFileDialogue.FileName; };
             openFileDialogue.CheckPathExists = true;
             openFileDialogue.ShowDialog();
             openFileDialogue = null;
@@ -98,7 +108,7 @@ namespace FrontEndApp
         private void BrowseToFile(object sender, System.ComponentModel.CancelEventArgs e)
         {
             // Direct to Uri
-            Filepath_Textbox.Text = openFileDialogue.FileName; 
+            //Filepath_Textbox.Text = openFileDialogue.FileName; 
         }
 
         private void Filepath_Textbox_TextChanged(object sender, TextChangedEventArgs e)
@@ -111,6 +121,35 @@ namespace FrontEndApp
         {
             string path = Filepath_Textbox.Text;
             return System.IO.File.Exists(path);
+        }
+
+        private void AddBtn_Click(object sender, RoutedEventArgs e)
+        {
+            string dataFieldName = FieldNameTextBox.Text;
+            // Validate Input
+            if (dataFieldName == string.Empty)
+            {
+                MessageBox.Show(unnamedFieldMessage,"Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                    return;
+            }
+
+            // Add!
+            DataObjectMetadata metadata = new DataObjectMetadata(FieldNameTextBox.Text, DataTypePropBox.SelectedItem as Type);
+            MetadataConfigurationTable.Items.Add(metadata);
+        }
+
+        private void RemoveBtn_Click(object sender, RoutedEventArgs e)
+        {
+            int selectedItemIndex = MetadataConfigurationTable.SelectedIndex;
+            // Validate
+            if (selectedItemIndex < 0)
+            {
+                MessageBox.Show(UnselectedFieldToRemoveMessage, "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
+
+            // Remove
+            MetadataConfigurationTable.Items.RemoveAt(selectedItemIndex);
         }
     }
 }

@@ -22,7 +22,6 @@ namespace FrontEndApp
     /// </summary>
     public partial class MainWindow : Window
     {
-        IImporter importer;
 
         public MainWindow()
         {
@@ -31,41 +30,31 @@ namespace FrontEndApp
 
         private void OpenLoaderWindow(object sender, RoutedEventArgs e)
         {
-            LoaderWindow loaderWindow = new LoaderWindow();
+            LoaderViewModel viewModel = new LoaderViewModel();
+            
+            LoaderWindow loaderWindow = new LoaderWindow(viewModel);
             loaderWindow.OnFileLoaded += Load;
+            loaderWindow.DataContext = new LoaderViewModel();
             loaderWindow.ShowDialog();
         }
 
         private void Load(object sender, DisplayViewModel viewModel)
         {
             PopulateColumns(viewModel.dataObjectMetadata);
-            PopulateData(viewModel.importer);
-
-        }
-
-        private void PopulateData(IImporter importer)
-        {
-            var data = importer.LoadAll();
-            foreach (var dataItem in data)
-            {
-                dataGridDisplay.Items.Add(dataItem);
-                //dataGridDisplay.ItemsSource = data;
-
-                //for (int i = 0; i < dataItem.Columns.Length; i++)
-                //{
-                //    dataGridDisplay.Items.Add(dataItem);
-                //}
-            }
+            DataContext = viewModel;
         }
 
         private void PopulateColumns(IEnumerable<DataObjectMetadata> metadataCollection)
         {
             dataGridDisplay.Columns.Clear();
+            int i = 0;
             foreach (var datacolumn in metadataCollection)
             {
                 DataGridTextColumn column = new DataGridTextColumn();
+                column.Binding = new Binding(String.Format("Columns[{0}]", i));
                 column.Header = datacolumn.columnName;
                 dataGridDisplay.Columns.Add(column);
+                i++;
             }
         }
 

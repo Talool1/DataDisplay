@@ -67,8 +67,8 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="DataObjectMetadata.cs" />
-    <Compile Include="LoaderFileLoadedEventArgs.cs" />
     <Compile Include="ViewModels\DisplayViewModel.cs" />
+    <Compile Include="ViewModels\LoaderViewModel.cs" />
     <Compile Include="Views\LoaderWindow.xaml.cs">
       <DependentUpon>LoaderWindow.xaml</DependentUpon>
     </Compile>
@@ -113,6 +113,9 @@
     <None Include="new2.csv">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Commands\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
