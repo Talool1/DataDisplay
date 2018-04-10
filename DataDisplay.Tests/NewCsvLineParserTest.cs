@@ -10,7 +10,7 @@ namespace DataDisplay.Tests
         [Test]
         public void ParseLine_ValidLineParse_Success()
         {
-            NewCsvLineParser lineParser = new NewCsvLineParser(TestInitializationFactory.GenerateFakeColumnTypes());
+            CsvLineParser lineParser = new CsvLineParser(TestInitializationFactory.GenerateFakeColumnTypes());
             string lineToParse = "2018-01-03 12:00:00, 1,2,3,4,5";
             DataObject result = lineParser.ParseLine(lineToParse);
             Assert.AreEqual(result.Columns.Length, 6);
@@ -25,7 +25,7 @@ namespace DataDisplay.Tests
         [Test]
         public void ParseLine_InvalidIntFormat_Exception()
         {
-            NewCsvLineParser lineParser = new NewCsvLineParser(TestInitializationFactory.GenerateFakeColumnTypes());
+            CsvLineParser lineParser = new CsvLineParser(TestInitializationFactory.GenerateFakeColumnTypes());
             string lineToParse = "2018-01-03 12:00:00, 1,2i,3,4,5";
             Assert.Catch(() => lineParser.ParseLine(lineToParse));
         }
@@ -33,7 +33,7 @@ namespace DataDisplay.Tests
         [Test]
         public void ParseLine_InvalidDateTimeFormat_Exception()
         {
-            NewCsvLineParser lineParser = new NewCsvLineParser(TestInitializationFactory.GenerateFakeColumnTypes());
+            CsvLineParser lineParser = new CsvLineParser(TestInitializationFactory.GenerateFakeColumnTypes());
             string lineToParse = "2018ax01-03 12:00:00, 1,2,3,4,5";
             Assert.Catch(() => lineParser.ParseLine(lineToParse));
         }

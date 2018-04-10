@@ -17,7 +17,7 @@ namespace SandboxApp
             string filename = @"new2.txt";
             string AppDir = AppDomain.CurrentDomain.BaseDirectory;
             string relativePath = AppDir + filename;
-            NewCsvImporter newCsvImporter = new NewCsvImporter(relativePath, GenerateFakeColumnTypes());
+            CsvImporter newCsvImporter = new CsvImporter(relativePath, GenerateFakeColumnTypes());
             bool endOfFile;
             IEnumerable<DataObject> dataObjects = newCsvImporter.LoadRange(3, out endOfFile);
             IEnumerable<DataObject> dataObjects2 = newCsvImporter.LoadRange(3, out endOfFile);

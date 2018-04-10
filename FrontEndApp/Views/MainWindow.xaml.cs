@@ -22,7 +22,6 @@ namespace FrontEndApp
     /// </summary>
     public partial class MainWindow : Window
     {
-
         public MainWindow()
         {
             InitializeComponent();
@@ -33,14 +32,14 @@ namespace FrontEndApp
             LoaderViewModel viewModel = new LoaderViewModel();
             
             LoaderWindow loaderWindow = new LoaderWindow(viewModel);
+            loaderWindow.DataContext = viewModel;
             loaderWindow.OnFileLoaded += Load;
-            loaderWindow.DataContext = new LoaderViewModel();
             loaderWindow.ShowDialog();
         }
 
-        private void Load(object sender, DisplayViewModel viewModel)
+        private void Load(object sender, MainWindowViewModel viewModel)
         {
-            PopulateColumns(viewModel.dataObjectMetadata);
+            PopulateColumns(viewModel.Metadatas);
             DataContext = viewModel;
         }
 

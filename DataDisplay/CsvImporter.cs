@@ -5,17 +5,17 @@ using System.IO;
 
 namespace DataDisplay
 {
-    public class NewCsvImporter : IImporter
+    public class CsvImporter : IImporter
     {
         public string filePath { get; private set; }
-        private NewCsvLineParser lineParser;
+        private CsvLineParser lineParser;
         private long streamPosition;
         
-        public NewCsvImporter(string filePath, Type[] dataObjectColumnTypes, char separatorChar = ',')
+        public CsvImporter(string filePath, Type[] dataObjectColumnTypes, char separatorChar = ',')
         {
             char[] whiteSpaceChars = new char[] { ' ' };
             this.filePath = filePath;
-            this.lineParser = new NewCsvLineParser(dataObjectColumnTypes, separatorChar, whiteSpaceChars);
+            this.lineParser = new CsvLineParser(dataObjectColumnTypes, separatorChar, whiteSpaceChars);
         }
 
         public IEnumerable<DataObject> LoadAll()

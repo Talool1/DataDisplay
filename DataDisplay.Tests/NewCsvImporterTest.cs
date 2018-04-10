@@ -19,7 +19,7 @@ namespace DataDisplay.Tests
         [Test]
         public void LoadAll_SimpleFileLoad_Success()
         {
-            NewCsvImporter importer = new NewCsvImporter(relativePath, TestInitializationFactory.GenerateFakeColumnTypes());
+            CsvImporter importer = new CsvImporter(relativePath, TestInitializationFactory.GenerateFakeColumnTypes());
             var result = importer.LoadAll();
             int numItems = EnumerateTestAndCount(result);
 
@@ -30,7 +30,7 @@ namespace DataDisplay.Tests
         [Test]
         public void LoadNext_LoadFirst3Lines_Success()
         {
-            NewCsvImporter importer = new NewCsvImporter(relativePath, TestInitializationFactory.GenerateFakeColumnTypes());
+            CsvImporter importer = new CsvImporter(relativePath, TestInitializationFactory.GenerateFakeColumnTypes());
             bool endOfFile;
             var result = importer.LoadRange(3, out endOfFile);
             int numItems = EnumerateTestAndCount(result);
@@ -43,7 +43,7 @@ namespace DataDisplay.Tests
         [Test]
         public void LoadNext_LoadAllLinesWithCount_Success()
         {
-            NewCsvImporter importer = new NewCsvImporter(relativePath, TestInitializationFactory.GenerateFakeColumnTypes());
+            CsvImporter importer = new CsvImporter(relativePath, TestInitializationFactory.GenerateFakeColumnTypes());
             bool endOfFile;
             var result = importer.LoadRange(7, out endOfFile);
             int numItems = EnumerateTestAndCount(result);
@@ -56,7 +56,7 @@ namespace DataDisplay.Tests
         [Test]
         public void LoadNext_LoadLast3Lines_Success()
         {
-            NewCsvImporter importer = new NewCsvImporter(relativePath, TestInitializationFactory.GenerateFakeColumnTypes());
+            CsvImporter importer = new CsvImporter(relativePath, TestInitializationFactory.GenerateFakeColumnTypes());
             bool endOfFile;
             var result = importer.LoadRange(3, out endOfFile, 4);
             int numItems = EnumerateTestAndCount(result);

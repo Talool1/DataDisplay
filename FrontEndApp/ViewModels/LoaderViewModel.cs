@@ -4,47 +4,58 @@ using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Input;
 
 namespace FrontEndApp.ViewModels 
 {
     class LoaderViewModel : INotifyPropertyChanged
     {
-        private char _SeparatorChar = ',';
+        private char _separatorChar = ',';
         public char SeparatorChar
         {
             get
             {
-                return _SeparatorChar;
+                return _separatorChar;
             }
             set
             {
-                _SeparatorChar = value;
-                if (PropertyChanged != null)
-                {
-                    PropertyChanged(this, new PropertyChangedEventArgs(nameof(SeparatorChar)));
-                }
+                _separatorChar = value;
+                RaisePropertyChangedEvent(nameof(SeparatorChar));
             }
         }
 
-        private string _FilePath;
+        private string _filePath;
         public string FilePath
         {
             get
             {
-                return _FilePath;
+                return _filePath;
             }
             set
             {
-                _FilePath = value;
-                if (PropertyChanged != null)
-                {
-                    PropertyChanged(this, new PropertyChangedEventArgs(nameof(FilePath)));
-                }
+                _filePath = value;
+                RaisePropertyChangedEvent(nameof(FilePath));
             }
         }
 
-        Type[] availableFieldTypes;
+        public ICommand LoadFileCommand { get; set; }
+        public LoaderViewModel()
+        {
+            //LoadFileCommand = loadCommand;
+            LoadFileCommand = new Commands.LoadingFileCommand(this);
+        }
+
+        public Type[] AvailableFieldTypes { get; set; } = new Type[]
+        { typeof(DateTime), typeof(int) };
 
         public event PropertyChangedEventHandler PropertyChanged;
+        private void RaisePropertyChangedEvent(string propertyName)
+        {
+            var propertyChanged = PropertyChanged;
+            if (propertyChanged != null)
+            {
+                propertyChanged(this, new PropertyChangedEventArgs(propertyName));
+            }
+        }
     }
 }

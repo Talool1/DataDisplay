@@ -6,6 +6,5 @@ namespace DataDisplay
 {
     class ParsingException : Exception
     {
-
     }
 }

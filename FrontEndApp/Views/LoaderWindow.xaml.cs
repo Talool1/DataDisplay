@@ -26,32 +26,21 @@ namespace FrontEndApp
         private string fileDoesntExistMessage = "The File you are trying to load doesn't exist.";
         private string unnamedFieldMessage = "The Field must have a name.";
         private string UnselectedFieldToRemoveMessage = "Please select the field you would like to remove.";
-        private readonly bool checkContinuously = true;
-        private OpenFileDialog openFileDialogue;
-        internal event EventHandler<ViewModels.DisplayViewModel> OnFileLoaded;
+        internal event EventHandler<ViewModels.MainWindowViewModel> OnFileLoaded;
         internal ViewModels.LoaderViewModel ViewModel { get; private set; }
 
         internal LoaderWindow(ViewModels.LoaderViewModel viewModel)
         {
-            this.ViewModel = viewModel;
+            DataContext = viewModel;
+            this.ViewModel = DataContext as ViewModels.LoaderViewModel;
             InitializeComponent();
-            if (checkContinuously)
-                OK_Btn.IsEnabled = false;
 
-            // Temp
-            DataTypePropBox.Items.Add(typeof(DateTime));
-            DataTypePropBox.Items.Add(typeof(int));
             DataTypePropBox.SelectedIndex = 0;
         }
 
-        private void OK_Btn_Click(object sender, RoutedEventArgs e)
+        private void TEMP_GenerateData()
         {
             string filePath = Filepath_Textbox.Text;
-            if (!ValidateFilepath())
-            {
-                MessageBox.Show(fileDoesntExistMessage, "Error", MessageBoxButton.OK ,MessageBoxImage.Error);
-                return;
-            }
 
             // TEMP
             DataObjectMetadata[] meta = new DataObjectMetadata[6];
@@ -80,10 +69,10 @@ namespace FrontEndApp
                 meta[i] = new DataObjectMetadata(dataNames[i], dataTypes[i]);
             }
 
-            IImporter importer = new NewCsvImporter(filePath, dataTypes);
+            IImporter importer = new CsvImporter(filePath, dataTypes);
 
-            var viewModel = new ViewModels.DisplayViewModel(meta, importer);
-            
+            var viewModel = new ViewModels.MainWindowViewModel(meta, importer);
+
             OnFileLoaded(this, viewModel);
             DialogResult = true;
         }
@@ -95,32 +84,12 @@ namespace FrontEndApp
         
         private void Browse_Btn_Click(object sender, RoutedEventArgs e)
         {
-            openFileDialogue = new OpenFileDialog();
+            OpenFileDialog openFileDialogue = new OpenFileDialog();
             openFileDialogue.Title = openFileDialogueTitle;
             openFileDialogue.Filter = fileType;
-            //openFileDialogue.FileOk += BrowseToFile;
             openFileDialogue.FileOk += (s, args) => { ViewModel.FilePath = openFileDialogue.FileName; };
             openFileDialogue.CheckPathExists = true;
             openFileDialogue.ShowDialog();
-            openFileDialogue = null;
-        }
-
-        private void BrowseToFile(object sender, System.ComponentModel.CancelEventArgs e)
-        {
-            // Direct to Uri
-            //Filepath_Textbox.Text = openFileDialogue.FileName; 
-        }
-
-        private void Filepath_Textbox_TextChanged(object sender, TextChangedEventArgs e)
-        {
-            if (checkContinuously)
-                OK_Btn.IsEnabled = ValidateFilepath();
-        }
-
-        private bool ValidateFilepath()
-        {
-            string path = Filepath_Textbox.Text;
-            return System.IO.File.Exists(path);
         }
 
         private void AddBtn_Click(object sender, RoutedEventArgs e)
@@ -151,5 +120,6 @@ namespace FrontEndApp
             // Remove
             MetadataConfigurationTable.Items.RemoveAt(selectedItemIndex);
         }
+        
     }
 }

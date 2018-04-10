@@ -8,9 +8,9 @@
         mc:Ignorable="d"
         Title="LoaderWindow" Height="450" Width="800" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
     <Grid>
-        <TextBox x:Name="Filepath_Textbox" Text="{Binding Path=FilePath}" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" VerticalAlignment="Top" Width="540" Margin="88,57,0,0" TextChanged="Filepath_Textbox_TextChanged"/>
+        <TextBox x:Name="Filepath_Textbox" Text="{Binding Path=FilePath}"  HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" VerticalAlignment="Top" Width="540" Margin="88,57,0,0"/>
         <Button x:Name="Browse_Btn" Content="Browse" HorizontalAlignment="Left" VerticalAlignment="Top" Width="95" Margin="633,57,0,0" Height="23" Click="Browse_Btn_Click"/>
-        <Button x:Name="OK_Btn" Content="OK" HorizontalAlignment="Left" Height="35" Margin="485,346,0,0" VerticalAlignment="Top" Width="113" Click="OK_Btn_Click" IsDefault="True"/>
+        <Button x:Name="OK_Btn" Command="{Binding LoadFileCommand}" Content="OK" HorizontalAlignment="Left" Height="35" Margin="485,346,0,0" VerticalAlignment="Top" Width="113" IsDefault="True"/>
         <Button x:Name="Cancel_Btn" Content="Cancel" HorizontalAlignment="Left" Height="35" Margin="615,346,0,0" VerticalAlignment="Top" Width="113" Click="Cancel_Btn_Click" IsCancel="True"/>
         <TextBox HorizontalAlignment="Left" Height="32" Margin="220,101,0,0" TextWrapping="Wrap" Text="{Binding Path=SeparatorChar, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top" Width="19" MaxLength="1"/>
         <Label Content="Separation Character" HorizontalAlignment="Left" Height="32" Margin="88,101,0,0" VerticalAlignment="Top" Width="132"/>
@@ -27,7 +27,7 @@
         <Label Content="Data Type" HorizontalAlignment="Left" Height="32" Margin="88,233,0,0" VerticalAlignment="Top" Width="85"/>
         <Button x:Name="AddBtn" Content="Add" HorizontalAlignment="Left" Height="23" Margin="343,203,0,0" VerticalAlignment="Top" Width="76" Click="AddBtn_Click"/>
         <Button x:Name="RemoveBtn" Content="Remove" HorizontalAlignment="Left" Height="23" Margin="343,234,0,0" VerticalAlignment="Top" Width="76" Click="RemoveBtn_Click"/>
-        <ComboBox x:Name="DataTypePropBox" HorizontalAlignment="Left" Height="31" Margin="178,234,0,0" VerticalAlignment="Top" Width="149"/>
+        <ComboBox x:Name="DataTypePropBox" ItemsSource="{Binding Path=AvailableFieldTypes}" HorizontalAlignment="Left" Height="31" Margin="178,234,0,0" VerticalAlignment="Top" Width="149"/>
 
 
     </Grid>
