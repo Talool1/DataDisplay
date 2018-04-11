@@ -31,8 +31,8 @@
             <ListView x:Name="MetadataConfigurationTable" ItemsSource="{Binding MetadataCollection}" HorizontalAlignment="Left" Height="201" Margin="374,80,0,0" VerticalAlignment="Top" Width="295">
                 <ListView.View>
                     <GridView>
-                        <GridViewColumn Header="Data Name" DisplayMemberBinding="{Binding Path=columnName}"/>
-                        <GridViewColumn Header="Data Type" DisplayMemberBinding="{Binding Path=columnDataType}"/>
+                        <GridViewColumn Header="Data Name" DisplayMemberBinding="{Binding Path=ColumnName}"/>
+                        <GridViewColumn Header="Data Type" DisplayMemberBinding="{Binding Path=ColumnDataType}"/>
                     </GridView>
                 </ListView.View>
             </ListView>
