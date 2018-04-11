@@ -116,3 +116,4 @@ C:\Users\Tal\Desktop\CSV_Project\DataDisplay\FrontEndApp\obj\Debug\Views\MainWin
 C:\Users\Tal\Desktop\CSV_Project\DataDisplay\FrontEndApp\obj\Debug\Views\LoaderWindow.baml
 C:\Users\Tal\Desktop\CSV_Project\DataDisplay\FrontEndApp\obj\Debug\Views\MainWindow.baml
 C:\Users\Tal\Desktop\CSV_Project\DataDisplay\FrontEndApp\bin\Debug\new2.csv
+C:\Users\Tal\Desktop\CSV_Project\DataDisplay\FrontEndApp\obj\Debug\GeneratedInternalTypeHelper.g.cs

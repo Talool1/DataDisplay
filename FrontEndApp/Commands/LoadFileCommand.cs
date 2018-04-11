@@ -11,10 +11,12 @@ namespace FrontEndApp.Commands
     class LoadingFileCommand : ICommand
     {
         LoaderViewModel viewModel;
+        MainWindowViewModel mwvm;
 
-        public LoadingFileCommand(LoaderViewModel viewModel)
+        public LoadingFileCommand(LoaderViewModel viewModel, MainWindowViewModel mwvm)
         {
             this.viewModel = viewModel;
+            this.mwvm = mwvm;
         }
 
         public event EventHandler CanExecuteChanged
@@ -36,7 +38,7 @@ namespace FrontEndApp.Commands
 
         public void Execute(object parameter)
         {
-            
+            viewModel.CloseViewCommand.Execute(this);
         }
     }
 }

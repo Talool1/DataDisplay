@@ -6,7 +6,7 @@ namespace DataDisplay
 {
     public class DataObject
     {
-        public object[] Columns { get; private set; }
+        public object[] Columns { get; set; }
 
         public DataObject(int numColumns)
         {

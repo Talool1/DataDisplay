@@ -9,3 +9,9 @@
 /packages/
 =======
 >>>>>>> parent of 359deb8... Updated .gitignore and removed unnecessary folders
+FrontEndApp/bin/Debug/FrontEndApp.exe
+FrontEndApp/bin/Debug/FrontEndApp.exe
+FrontEndApp/bin/Debug/FrontEndApp.exe
+FrontEndApp/bin/Debug/FrontEndApp.pdb
+FrontEndApp/obj/Debug/FrontEndApp.exe
+FrontEndApp/obj/Debug/FrontEndApp.pdb

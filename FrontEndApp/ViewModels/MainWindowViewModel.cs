@@ -3,35 +3,46 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Input;
 using DataDisplay;
+using FrontEndApp.Commands;
 
 namespace FrontEndApp.ViewModels
 {
     class MainWindowViewModel
     {
-        public IImporter Importer { get; private set; }
-        public DataObjectMetadata[] Metadatas { get; private set; }
-        public string[] ColumnNames
+        internal IImporter Importer { get; private set; }
+        internal DataObjectMetadata[] Metadatas { get; private set; }
+        internal string[] ColumnNames
         {
             get
             {
                 string[] columnNames = new string[Metadatas.Length];
                 for (int i = 0; i < columnNames.Length; i++)
                 {
-                    columnNames[i] = Metadatas[i].columnName;
+                    columnNames[i] = Metadatas[i].ColumnName;
                 }
                 return columnNames;
             }
         }
 
-        // For now....
-        public List<DataObject> TheData { get; private set; }
+        internal ICommand LaunchView { get; set; }
+        public ICommand LaunchLoaderWindow { get; set; }
 
-        public MainWindowViewModel(DataObjectMetadata[] dataObjectMetadata, IImporter importer)
+        public MainWindowViewModel()
         {
-            this.Importer = importer;
-            this.TheData = importer.LoadAll() as List<DataObject>;
-            this.Metadatas = dataObjectMetadata;
+            LaunchLoaderWindow = new RelayCommand((o) => { return true; }, (o) => {
+                LoaderViewModel lvm = new LoaderViewModel(this);
+                lvm.LaunchViewCommand.Execute(this);
+            });
         }
+
+        private void LoadData()
+        {
+            
+        }
+
+        // For now....
+        internal List<DataObject> TheData { get; private set; }        
     }
 }

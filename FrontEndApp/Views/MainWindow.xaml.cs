@@ -29,12 +29,12 @@ namespace FrontEndApp
 
         private void OpenLoaderWindow(object sender, RoutedEventArgs e)
         {
-            LoaderViewModel viewModel = new LoaderViewModel();
-            
-            LoaderWindow loaderWindow = new LoaderWindow(viewModel);
-            loaderWindow.DataContext = viewModel;
-            loaderWindow.OnFileLoaded += Load;
-            loaderWindow.ShowDialog();
+            LoaderViewModel viewModel = new LoaderViewModel(null);
+
+            //LoaderWindow loaderWindow = new LoaderWindow(viewModel);
+            //loaderWindow.DataContext = viewModel;
+            //loaderWindow.OnFileLoaded += Load;
+            //loaderWindow.ShowDialog();
         }
 
         private void Load(object sender, MainWindowViewModel viewModel)
@@ -51,7 +51,7 @@ namespace FrontEndApp
             {
                 DataGridTextColumn column = new DataGridTextColumn();
                 column.Binding = new Binding(String.Format("Columns[{0}]", i));
-                column.Header = datacolumn.columnName;
+                column.Header = datacolumn.ColumnName;
                 dataGridDisplay.Columns.Add(column);
                 i++;
             }

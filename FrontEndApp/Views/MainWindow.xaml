@@ -4,17 +4,20 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:FrontEndApp"
+        xmlns:local1="clr-namespace:FrontEndApp.ViewModels"
         mc:Ignorable="d"
         Title="DataDisplay" Height="450" Width="800" WindowStartupLocation="CenterScreen">
+    <Window.DataContext>
+        <local1:MainWindowViewModel/>
+    </Window.DataContext>
     <Grid>
         <Menu HorizontalAlignment="Left" VerticalAlignment="Top">
             <MenuItem Header="LoadFile" >
-                <MenuItem Header="Load CSV" Click="OpenLoaderWindow"/>
+                <MenuItem Header="Load CSV" Command="{Binding LaunchLoaderWindow}"/>
                 <Separator/>
                 <MenuItem Header="Close" Click="MenuItem_Click"/>
             </MenuItem>
         </Menu>
         <DataGrid x:Name="dataGridDisplay" Grid.Column="{Binding Path=ColumnNames}"  ItemsSource="{Binding Path=TheData}" Margin="0,23,0,0" SelectionMode="Single" AutoGenerateColumns="False"/>
-
     </Grid>
 </Window>

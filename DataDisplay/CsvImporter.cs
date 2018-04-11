@@ -80,5 +80,10 @@ namespace DataDisplay
             Console.WriteLine("-------------");
             return dataObject;
         }
+
+        public string GetFileTypeExtentionString()
+        {
+            return "CSV Files | *.csv";
+        }
     }
 }

@@ -6,29 +6,37 @@
         xmlns:local="clr-namespace:FrontEndApp"
         xmlns:System="clr-namespace:System;assembly=mscorlib" x:Class="FrontEndApp.LoaderWindow"
         mc:Ignorable="d"
-        Title="LoaderWindow" Height="450" Width="800" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
+        Title="LoaderWindow" Height="405.882" Width="706.723" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
     <Grid>
-        <TextBox x:Name="Filepath_Textbox" Text="{Binding Path=FilePath}"  HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" VerticalAlignment="Top" Width="540" Margin="88,57,0,0"/>
-        <Button x:Name="Browse_Btn" Content="Browse" HorizontalAlignment="Left" VerticalAlignment="Top" Width="95" Margin="633,57,0,0" Height="23" Click="Browse_Btn_Click"/>
-        <Button x:Name="OK_Btn" Command="{Binding LoadFileCommand}" Content="OK" HorizontalAlignment="Left" Height="35" Margin="485,346,0,0" VerticalAlignment="Top" Width="113" IsDefault="True"/>
-        <Button x:Name="Cancel_Btn" Content="Cancel" HorizontalAlignment="Left" Height="35" Margin="615,346,0,0" VerticalAlignment="Top" Width="113" Click="Cancel_Btn_Click" IsCancel="True"/>
-        <TextBox HorizontalAlignment="Left" Height="32" Margin="220,101,0,0" TextWrapping="Wrap" Text="{Binding Path=SeparatorChar, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top" Width="19" MaxLength="1"/>
-        <Label Content="Separation Character" HorizontalAlignment="Left" Height="32" Margin="88,101,0,0" VerticalAlignment="Top" Width="132"/>
-        <ListView x:Name="MetadataConfigurationTable" HorizontalAlignment="Left" Height="201" Margin="433,111,0,0" VerticalAlignment="Top" Width="295">
-            <ListView.View>
-                <GridView>
-                    <GridViewColumn Header="Data Name" DisplayMemberBinding="{Binding Path=columnName}"/>
-                    <GridViewColumn Header="Data Type" DisplayMemberBinding="{Binding Path=columnDataType}"/>
-                </GridView>
-            </ListView.View>
-        </ListView>
-        <TextBox x:Name="FieldNameTextBox" HorizontalAlignment="Left" Height="32" Margin="178,196,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="149"/>
-        <Label Content="Field Name" HorizontalAlignment="Left" Height="32" Margin="88,196,0,0" VerticalAlignment="Top" Width="85"/>
-        <Label Content="Data Type" HorizontalAlignment="Left" Height="32" Margin="88,233,0,0" VerticalAlignment="Top" Width="85"/>
-        <Button x:Name="AddBtn" Content="Add" HorizontalAlignment="Left" Height="23" Margin="343,203,0,0" VerticalAlignment="Top" Width="76" Click="AddBtn_Click"/>
-        <Button x:Name="RemoveBtn" Content="Remove" HorizontalAlignment="Left" Height="23" Margin="343,234,0,0" VerticalAlignment="Top" Width="76" Click="RemoveBtn_Click"/>
-        <ComboBox x:Name="DataTypePropBox" ItemsSource="{Binding Path=AvailableFieldTypes}" HorizontalAlignment="Left" Height="31" Margin="178,234,0,0" VerticalAlignment="Top" Width="149"/>
-
-
+        <TextBox x:Name="Filepath_Textbox" Text="{Binding Path=FilePath, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"  HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" VerticalAlignment="Top" Width="540" Margin="29,36,0,0" DataContext="{Binding FilePath}"/>
+        <Button x:Name="Browse_Btn" Command="{Binding LaunchFileBrowserCommand}" Content="Browse" HorizontalAlignment="Left" VerticalAlignment="Top" Width="95" Margin="574,36,0,0" Height="23"/>
+        <Button x:Name="OK_Btn" Command="{Binding LoadFileCommand}" Content="OK" HorizontalAlignment="Left" Height="35" Margin="426,316,0,0" VerticalAlignment="Top" Width="113" IsDefault="True"/>
+        <Button x:Name="Cancel_Btn" Command="{Binding CloseViewCommand}" Content="Cancel" HorizontalAlignment="Left" Height="35" Margin="556,316,0,0" VerticalAlignment="Top" Width="113" IsCancel="True"/>
+        <TextBox HorizontalAlignment="Left" Height="32" Margin="161,95,0,0" TextWrapping="Wrap" Text="{Binding Path=SeparatorChar, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top" Width="19" MaxLength="1"/>
+        <Label Content="Separation Character" HorizontalAlignment="Left" Height="32" Margin="29,95,0,0" VerticalAlignment="Top" Width="132"/>
+        <Grid DataContext="{Binding metadataDefinitionVM}">
+            <!--  Field Name  -->
+            <Label Content="Field Name" HorizontalAlignment="Left" Height="32" Margin="29,165,0,0" VerticalAlignment="Top" Width="85"/>
+            <TextBox x:Name="FieldNameTextBox" Text="{Binding Path=FieldName}" HorizontalAlignment="Left" Height="32" Margin="119,165,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="149"/>
+            
+            <!--  Data Type   -->
+            <Label Content="Data Type" HorizontalAlignment="Left" Height="32" Margin="29,202,0,0" VerticalAlignment="Top" Width="85"/>
+            <ComboBox x:Name="DataTypePropBox" SelectedItem="{Binding FieldType}" ItemsSource="{Binding Path=AvailableFieldTypes}" HorizontalAlignment="Left" Height="31" Margin="119,203,0,0" VerticalAlignment="Top" Width="149"/>
+            
+            <!--  Buttons  -->
+            <Button x:Name="AddBtn" Command="{Binding Path=Add}" Content="Add" HorizontalAlignment="Left" Height="23" Margin="284,172,0,0" VerticalAlignment="Top" Width="76"/>
+            <Button x:Name="RemoveBtn" Content="Remove" Command="{Binding Remove}" HorizontalAlignment="Left" Height="23" Margin="284,203,0,0" VerticalAlignment="Top" Width="76"/>
+            
+            <!--  Listview  -->
+            <ListView x:Name="MetadataConfigurationTable" ItemsSource="{Binding MetadataCollection}" HorizontalAlignment="Left" Height="201" Margin="374,80,0,0" VerticalAlignment="Top" Width="295">
+                <ListView.View>
+                    <GridView>
+                        <GridViewColumn Header="Data Name" DisplayMemberBinding="{Binding Path=columnName}"/>
+                        <GridViewColumn Header="Data Type" DisplayMemberBinding="{Binding Path=columnDataType}"/>
+                    </GridView>
+                </ListView.View>
+            </ListView>
+            
+        </Grid>
     </Grid>
 </Window>

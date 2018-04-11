@@ -67,9 +67,14 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Commands\LoadFileCommand.cs" />
-    <Compile Include="DataObjectMetadata.cs" />
+    <Compile Include="Commands\RelayCommand.cs" />
+    <Compile Include="FakeDataFactory.cs" />
+    <Compile Include="ViewModels\DataObjectMetadataViewModel.cs" />
+    <Compile Include="ViewModels\DataObjectViewModel.cs" />
     <Compile Include="ViewModels\MainWindowViewModel.cs" />
     <Compile Include="ViewModels\LoaderViewModel.cs" />
+    <Compile Include="ViewModels\MetadataDefinitionViewModel.cs" />
+    <Compile Include="ViewModels\ObservableString.cs" />
     <Compile Include="Views\LoaderWindow.xaml.cs">
       <DependentUpon>LoaderWindow.xaml</DependentUpon>
     </Compile>
@@ -102,7 +107,9 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\DataDisplay\DataDisplay.csproj">

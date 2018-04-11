@@ -5,6 +5,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
+using FrontEndApp.Commands;
+using Microsoft.Win32;
 
 namespace FrontEndApp.ViewModels 
 {
@@ -38,15 +40,46 @@ namespace FrontEndApp.ViewModels
             }
         }
 
+        //public ObservableString ObservableFilePath;
+
+        public MetadataDefinitionViewModel metadataDefinitionVM { get; set; }
+        private LoaderWindow myView;
+
+        public ICommand LaunchViewCommand { get; set; }
+        public ICommand CloseViewCommand { get; set; }
+        public ICommand LaunchFileBrowserCommand { get; set; }
         public ICommand LoadFileCommand { get; set; }
-        public LoaderViewModel()
+
+        public LoaderViewModel(MainWindowViewModel mainWindowViewModel)
         {
-            //LoadFileCommand = loadCommand;
-            LoadFileCommand = new Commands.LoadingFileCommand(this);
+            LoadFileCommand = new LoadingFileCommand(this, mainWindowViewModel);
+            LaunchViewCommand = new RelayCommand((o) => { return true; }, (o) => { LaunchView(); });
+            metadataDefinitionVM = new MetadataDefinitionViewModel();
+            LaunchFileBrowserCommand = new RelayCommand((o) => { return true; }, (o) => { OpenBrowseWindow(); });
+            CloseViewCommand = new RelayCommand((o) => { return true; }, (o) => { CloseView(); });
         }
 
-        public Type[] AvailableFieldTypes { get; set; } = new Type[]
-        { typeof(DateTime), typeof(int) };
+        private void OpenBrowseWindow()
+        {
+            OpenFileDialog openFileDialogue = new OpenFileDialog();
+            //openFileDialogue.Title = openFileDialogueTitle;
+            //openFileDialogue.Filter = fileType;
+            openFileDialogue.FileOk += (s, args) => { FilePath = openFileDialogue.FileName; };
+            openFileDialogue.CheckPathExists = true;
+            openFileDialogue.ShowDialog();
+        }
+
+        private void LaunchView()
+        {
+            myView = new LoaderWindow(this);
+            //myView.DataContext = this;
+            myView.ShowDialog();
+        }
+
+        private void CloseView()
+        {
+            myView.Close();
+        }
 
         public event PropertyChangedEventHandler PropertyChanged;
         private void RaisePropertyChangedEvent(string propertyName)

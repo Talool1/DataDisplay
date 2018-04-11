@@ -7,5 +7,6 @@ namespace DataDisplay
     {
         IEnumerable<DataObject> LoadAll();
         IEnumerable<DataObject> LoadRange(int count, out bool endOfFile, int skip = 0);
+        string GetFileTypeExtentionString();
     }
 }
