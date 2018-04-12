@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using DataDisplay;
+using FrontEndApp.Commands;
 using FrontEndApp.ViewModels;
 
 namespace FrontEndApp
@@ -22,44 +23,27 @@ namespace FrontEndApp
     /// </summary>
     public partial class MainWindow : Window
     {
+        MainWindowViewModel vm;
         public MainWindow()
         {
+            vm = new MainWindowViewModel();
+            DataContext = vm;
+            vm.CloseWindow = new AlwaysExecutableCommand( this.Close );
+            vm.ViewGenerateColumns = GenerateColumns;
+
             InitializeComponent();
         }
 
-        private void OpenLoaderWindow(object sender, RoutedEventArgs e)
-        {
-            LoaderViewModel viewModel = new LoaderViewModel(null);
-
-            //LoaderWindow loaderWindow = new LoaderWindow(viewModel);
-            //loaderWindow.DataContext = viewModel;
-            //loaderWindow.OnFileLoaded += Load;
-            //loaderWindow.ShowDialog();
-        }
-
-        private void Load(object sender, MainWindowViewModel viewModel)
-        {
-            PopulateColumns(viewModel.Metadatas);
-            DataContext = viewModel;
-        }
-
-        private void PopulateColumns(IEnumerable<DataObjectMetadata> metadataCollection)
+        internal void GenerateColumns(DataObjectMetadataViewModel[] metadataArray)
         {
             dataGridDisplay.Columns.Clear();
-            int i = 0;
-            foreach (var datacolumn in metadataCollection)
+            for (int i = 0; i < metadataArray.Length; i++)
             {
                 DataGridTextColumn column = new DataGridTextColumn();
                 column.Binding = new Binding(String.Format("Columns[{0}]", i));
-                column.Header = datacolumn.ColumnName;
+                column.Header = metadataArray[i].ColumnName;
                 dataGridDisplay.Columns.Add(column);
-                i++;
             }
-        }
-
-        private void MenuItem_Click(object sender, RoutedEventArgs e)
-        {
-            Close();
         }
     }
 }

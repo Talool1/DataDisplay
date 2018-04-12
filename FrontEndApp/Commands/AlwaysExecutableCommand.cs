@@ -7,7 +7,7 @@ using System.Windows.Input;
 
 namespace FrontEndApp.Commands
 {
-    class CanAlwaysExecuteCommand : ICommand
+    class AlwaysExecutableCommand : ICommand
     {
         Action action;
         public event EventHandler CanExecuteChanged
@@ -16,7 +16,7 @@ namespace FrontEndApp.Commands
             remove { CommandManager.RequerySuggested -= value; }
         }
 
-        public CanAlwaysExecuteCommand(Action action)
+        public AlwaysExecutableCommand(Action action)
         {
             this.action = action;
         }

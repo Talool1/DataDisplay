@@ -50,7 +50,9 @@ namespace FrontEndApp.Commands
 
         public void Execute(object parameter)
         {
+            //mwvm.Metadatas = loaderViewModel.metadataDefinitionVM.MetadataCollection.ToArray();
             loaderViewModel.CloseViewCommand.Execute(this);
+            mwvm.LoadData(loaderViewModel);
         }
     }
 }

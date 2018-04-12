@@ -52,7 +52,7 @@ namespace FrontEndApp.ViewModels
 
         public LoaderViewModel(MainWindowViewModel mainWindowViewModel)
         {
-            LoadFileCommand = new LoadingFileCommand(this, mainWindowViewModel);
+            //LoadFileCommand = new LoadingFileCommand(this, mainWindowViewModel);
             LaunchViewCommand = new RelayCommand((o) => { return true; }, (o) => { LaunchView(); });
             metadataDefinitionVM = new MetadataDefinitionViewModel();
             LaunchFileBrowserCommand = new RelayCommand((o) => { return true; }, (o) => { OpenBrowseWindow(); });
