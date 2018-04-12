@@ -8,7 +8,7 @@
         mc:Ignorable="d"
         Title="LoaderWindow" Height="405.882" Width="706.723" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
     <Grid>
-        <TextBox x:Name="Filepath_Textbox" Text="{Binding Path=FilePath, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"  HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" VerticalAlignment="Top" Width="540" Margin="29,36,0,0" DataContext="{Binding FilePath}"/>
+        <TextBox x:Name="Filepath_Textbox" Text="{Binding FilePath, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"  HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" VerticalAlignment="Top" Width="540" Margin="29,36,0,0"/>
         <Button x:Name="Browse_Btn" Command="{Binding LaunchFileBrowserCommand}" Content="Browse" HorizontalAlignment="Left" VerticalAlignment="Top" Width="95" Margin="574,36,0,0" Height="23"/>
         <Button x:Name="OK_Btn" Command="{Binding LoadFileCommand}" Content="OK" HorizontalAlignment="Left" Height="35" Margin="426,316,0,0" VerticalAlignment="Top" Width="113" IsDefault="True"/>
         <Button x:Name="Cancel_Btn" Command="{Binding CloseViewCommand}" Content="Cancel" HorizontalAlignment="Left" Height="35" Margin="556,316,0,0" VerticalAlignment="Top" Width="113" IsCancel="True"/>
@@ -17,7 +17,7 @@
         <Grid DataContext="{Binding metadataDefinitionVM}">
             <!--  Field Name  -->
             <Label Content="Field Name" HorizontalAlignment="Left" Height="32" Margin="29,165,0,0" VerticalAlignment="Top" Width="85"/>
-            <TextBox x:Name="FieldNameTextBox" Text="{Binding Path=FieldName}" HorizontalAlignment="Left" Height="32" Margin="119,165,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="149"/>
+            <TextBox x:Name="FieldNameTextBox" Text="{Binding Path=FieldName, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Height="32" Margin="119,165,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="149"/>
             
             <!--  Data Type   -->
             <Label Content="Data Type" HorizontalAlignment="Left" Height="32" Margin="29,202,0,0" VerticalAlignment="Top" Width="85"/>
@@ -25,7 +25,7 @@
             
             <!--  Buttons  -->
             <Button x:Name="AddBtn" Command="{Binding Path=Add}" Content="Add" HorizontalAlignment="Left" Height="23" Margin="284,172,0,0" VerticalAlignment="Top" Width="76"/>
-            <Button x:Name="RemoveBtn" Content="Remove" Command="{Binding Remove}" HorizontalAlignment="Left" Height="23" Margin="284,203,0,0" VerticalAlignment="Top" Width="76"/>
+            <Button x:Name="RemoveBtn" Content="Remove" Command="{Binding Remove}" CommandParameter="{Binding ElementName=MetadataConfigurationTable, Path=SelectedIndex}" HorizontalAlignment="Left" Height="23" Margin="284,203,0,0" VerticalAlignment="Top" Width="76"/>
             
             <!--  Listview  -->
             <ListView x:Name="MetadataConfigurationTable" ItemsSource="{Binding MetadataCollection}" HorizontalAlignment="Left" Height="201" Margin="374,80,0,0" VerticalAlignment="Top" Width="295">

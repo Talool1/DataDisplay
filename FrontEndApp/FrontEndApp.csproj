@@ -66,6 +66,7 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Commands\CanAlwaysExecuteCommand.cs" />
     <Compile Include="Commands\LoadFileCommand.cs" />
     <Compile Include="Commands\RelayCommand.cs" />
     <Compile Include="FakeDataFactory.cs" />

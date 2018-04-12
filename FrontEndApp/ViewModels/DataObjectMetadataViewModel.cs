@@ -40,7 +40,6 @@ namespace FrontEndApp
                 RaisePropertyChangedEvent(nameof(ColumnName));
             }
         }
-
         public Type ColumnDataType
         {
             get

@@ -21,12 +21,12 @@ namespace FrontEndApp
     /// </summary>
     public partial class LoaderWindow : Window
     {
-        private string openFileDialogueTitle = "Select File";
-        private string fileType = "CSV Files | *.csv";
-
-        private string fileDoesntExistMessage = "The File you are trying to load doesn't exist.";
-        private string unnamedFieldMessage = "The Field must have a name.";
-        private string UnselectedFieldToRemoveMessage = "Please select the field you would like to remove.";
+        //private string openFileDialogueTitle = "Select File";
+        //private string fileType = "CSV Files | *.csv";
+        //
+        //private string fileDoesntExistMessage = "The File you are trying to load doesn't exist.";
+        //private string unnamedFieldMessage = "The Field must have a name.";
+        //private string UnselectedFieldToRemoveMessage = "Please select the field you would like to remove.";
 
         internal ViewModels.LoaderViewModel ViewModel { get; private set; }
 

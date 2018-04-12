@@ -72,7 +72,7 @@ namespace FrontEndApp.ViewModels
         private void LaunchView()
         {
             myView = new LoaderWindow(this);
-            //myView.DataContext = this;
+            myView.DataContext = this;
             myView.ShowDialog();
         }
 

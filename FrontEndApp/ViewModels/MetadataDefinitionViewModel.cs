@@ -25,21 +25,27 @@ namespace FrontEndApp.ViewModels
         {
             add = new RelayCommand((o) =>
             {
-                return true;
+                if (FieldName != null && FieldName.Trim() != string.Empty)
+                {
+                    return true;
+                }
+                return false;
             },
             (o) =>
             {
                 DataObjectMetadata meta = FromCurrentToMetadata();
                 DataObjectMetadataViewModel metaVm = new DataObjectMetadataViewModel(meta);
-                MetadataCollection.Add(new DataObjectMetadataViewModel(FromCurrentToMetadata()));
+                MetadataCollection.Add(metaVm);
             });
 
             remove = new RelayCommand((o) =>
             {
-                return true;
-
+                if(o == null)
+                {
+                    return false;
+                }
                 int i = (int)o;
-                return i >= 0;
+                return (i >= 0) && (i < MetadataCollection.Count);
             },
             (o) =>
             {
@@ -83,7 +89,7 @@ namespace FrontEndApp.ViewModels
 
         private DataObjectMetadata FromCurrentToMetadata()
         {
-            return new DataObjectMetadata(fieldName, fieldType);
+            return new DataObjectMetadata(FieldName, FieldType);
         }
 
         private ICommand add;
