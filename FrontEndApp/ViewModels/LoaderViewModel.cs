@@ -12,8 +12,8 @@ namespace FrontEndApp.ViewModels
 {
     class LoaderViewModel : INotifyPropertyChanged
     {
-        private char _separatorChar = ',';
-        public char SeparatorChar
+        private string _separatorChar = ",";
+        public string SeparatorChar
         {
             get
             {
@@ -63,7 +63,7 @@ namespace FrontEndApp.ViewModels
         {
             OpenFileDialog openFileDialogue = new OpenFileDialog();
             //openFileDialogue.Title = openFileDialogueTitle;
-            //openFileDialogue.Filter = fileType;
+            openFileDialogue.Filter = "CSV Files | *.csv";
             openFileDialogue.FileOk += (s, args) => { FilePath = openFileDialogue.FileName; };
             openFileDialogue.CheckPathExists = true;
             openFileDialogue.ShowDialog();

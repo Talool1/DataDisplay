@@ -10,7 +10,11 @@ namespace FrontEndApp.Commands
     class CanAlwaysExecuteCommand : ICommand
     {
         Action action;
-        public event EventHandler CanExecuteChanged;
+        public event EventHandler CanExecuteChanged
+        {
+            add { CommandManager.RequerySuggested += value; }
+            remove { CommandManager.RequerySuggested -= value; }
+        }
 
         public CanAlwaysExecuteCommand(Action action)
         {

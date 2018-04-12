@@ -10,12 +10,12 @@ namespace FrontEndApp.Commands
 {
     class LoadingFileCommand : ICommand
     {
-        LoaderViewModel viewModel;
+        LoaderViewModel loaderViewModel;
         MainWindowViewModel mwvm;
 
         public LoadingFileCommand(LoaderViewModel viewModel, MainWindowViewModel mwvm)
         {
-            this.viewModel = viewModel;
+            this.loaderViewModel = viewModel;
             this.mwvm = mwvm;
         }
 
@@ -27,18 +27,30 @@ namespace FrontEndApp.Commands
 
         private bool ValidateFilepath(string filePath)
         {
-            string path = viewModel.FilePath;
+            string path = loaderViewModel.FilePath;
             return System.IO.File.Exists(path);
         }
 
         public bool CanExecute(object parameter)
         {
-            return ValidateFilepath(parameter as string);
+            bool isValidPath = ValidateFilepath(parameter as string);
+            bool isValidSeparator = ValidateSeparator();
+            return isValidPath && isValidSeparator;
+        }
+
+        private bool ValidateSeparator()
+        {
+            string separator = loaderViewModel.SeparatorChar;
+            if (separator != null && separator.Length == 1)
+            {
+                return true;
+            }
+            return false;
         }
 
         public void Execute(object parameter)
         {
-            viewModel.CloseViewCommand.Execute(this);
+            loaderViewModel.CloseViewCommand.Execute(this);
         }
     }
 }
