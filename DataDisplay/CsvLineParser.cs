@@ -42,7 +42,7 @@ namespace DataDisplay
             if (tokens.Length != columnTypes.Length)
             {
                 // TODO: Throw an exception or skip line entirely depending on setting
-                throw new DataLengthMismatch();
+                throw new DataLengthMismatch(columnTypes.Length, tokens.Length);
             }
 
             DataObject dataObject = new DataObject(tokens.Length);
