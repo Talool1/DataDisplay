@@ -11,7 +11,7 @@ namespace DataDisplay
         public readonly string actualTokenContent;
         public readonly Type expectedTokenType;
 
-        public TokenParsingException() : base(DefaultMessage) { }
+        public TokenParsingException() : this(DefaultMessage) { }
         public TokenParsingException(string errorMessage) : base(errorMessage) { }
         public TokenParsingException(string actualTokenContent, Type expectedTokenType) :
             this(FormatDetailedErrorMessage(actualTokenContent, expectedTokenType))

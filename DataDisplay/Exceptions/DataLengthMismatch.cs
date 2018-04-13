@@ -11,7 +11,7 @@ namespace DataDisplay
         public readonly int expectedNumberOfData;
         public readonly int actualNumberOfData;
 
-        public DataLengthMismatch() : base(DefaultMessage) { }
+        public DataLengthMismatch() : this(DefaultMessage) { }
         public DataLengthMismatch(string message) : base(message) { }
         public DataLengthMismatch(int expectedNumberOfData, int actualNumberOfData) :
             this(FormatDetailedErrorMessage(expectedNumberOfData, actualNumberOfData))
