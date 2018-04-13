@@ -34,6 +34,7 @@ namespace FrontEndApp
             InitializeComponent();
         }
 
+        // Unfortunately this method is necessary in code, meaning no ZERO code-behind in this class
         internal void GenerateColumns(DataObjectMetadataViewModel[] metadataArray)
         {
             dataGridDisplay.Columns.Clear();

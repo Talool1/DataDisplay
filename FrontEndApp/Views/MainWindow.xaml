@@ -15,6 +15,6 @@
                 <MenuItem Header="Close" Command="{Binding CloseWindow}"/>
             </MenuItem>
         </Menu>
-        <DataGrid x:Name="dataGridDisplay" ItemsSource="{Binding Path=TheData}" Margin="0,23,0,0" SelectionMode="Single" AutoGenerateColumns="False"/>
+        <DataGrid x:Name="dataGridDisplay" ItemsSource="{Binding Path=AllData}" Margin="0,23,0,0" SelectionMode="Single" AutoGenerateColumns="False"/>
     </Grid>
 </Window>

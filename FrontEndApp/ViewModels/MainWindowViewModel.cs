@@ -30,6 +30,15 @@ namespace FrontEndApp.ViewModels
                 return columnNames;
             }
         }
+        public IEnumerable<DataObject> AllData
+        {
+            get
+            {
+                if (Importer != null)
+                    return Importer.LoadAll();
+                return null;
+            }
+        }
         
         public ICommand LaunchLoaderWindow { get; set; }
         public ICommand CloseWindow { get; set; }
@@ -65,6 +74,7 @@ namespace FrontEndApp.ViewModels
 
             // Trying smt 'creative' here...
             RaisePropertyChangedEvent(nameof(ColumnNames));
+            RaisePropertyChangedEvent(nameof(AllData));
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
