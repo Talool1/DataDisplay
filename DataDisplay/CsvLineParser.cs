@@ -42,7 +42,7 @@ namespace DataDisplay
             if (tokens.Length != columnTypes.Length)
             {
                 // TODO: Throw an exception or skip line entirely depending on setting
-                throw new ParsingException();
+                throw new DataLengthMismatch();
             }
 
             DataObject dataObject = new DataObject(tokens.Length);
@@ -50,24 +50,33 @@ namespace DataDisplay
             {
                 string token = tokens[i];
                 string currentToken = token.Trim(whitespaceCharacters);
-                object data = ParseData(columnTypes[i], currentToken);
+                object data = ParseToken(columnTypes[i], currentToken);
                 dataObject.Columns[i] = data;
             }
 
             return dataObject;
         }
 
-        private object ParseData(Type dataType, string dataString)
+        private object ParseToken(Type expectedDataType, string dataString)
         {
-            // CNVN: In a scenario like this should I call invoke explicitly or just ()
-            object data = typeToMethodParsingTable[dataType].Invoke(dataString);
+            object data;
+            try
+            {
+                // CNVN: In a scenario like this should I call invoke explicitly or just ()
+                data = typeToMethodParsingTable[expectedDataType].Invoke(dataString);
+            }
+            catch
+            {
+                throw new TokenParsingException(dataString, expectedDataType);
+            }
 
             // Do we even need this check? probably...
-            if (data.GetType() != dataType)
+            Type actualType = data.GetType();
+            if (actualType != expectedDataType)
             {
                 // This one is interesting, what do we do here? can we 'correct' it at all?
                 // Maybe skip line...
-                throw new ParsingException();
+                throw new DataTypeMismatchException(expectedDataType, actualType);
             }
             return data;
         }
